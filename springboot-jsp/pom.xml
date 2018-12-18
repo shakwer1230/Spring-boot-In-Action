@@ -7,9 +7,33 @@
         <groupId>com.sun.lvxk</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
+    <packaging>war</packaging>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>springboot-jsp</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!--jsp的springboot 支持-->
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <!--<version>9.0.10</version>-->
+        </dependency>
+
+        <!--jsp對servlet容器的支持-->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+        </dependency>
+        <!--jstl支持-->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
