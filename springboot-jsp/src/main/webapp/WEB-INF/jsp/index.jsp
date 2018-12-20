@@ -11,6 +11,6 @@
     <title>jsp demo</title>
 </head>
 <body>
-<p>this is a jsp for testing</p>
+<p>this is a jsp page for testing, always welcome !</p>
 </body>
 </html>
