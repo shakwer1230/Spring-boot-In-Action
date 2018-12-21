@@ -1,5 +1,6 @@
 package com.sun.jsp.model;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
@@ -24,7 +25,8 @@ public class User {
     @Column(name = "username")
     public String userName;
 
-    @JsonIgnore
+//    @JsonIgnore //使用JackJson该字段不被序列化
+    @JSONField(serialize = false) // 使用FastJson 该字段不被序列化
     @Column(name = "password")
     public String passWord;
 
