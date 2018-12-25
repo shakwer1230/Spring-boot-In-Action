@@ -2,6 +2,7 @@ package com.sun.jsp.controller;
 
 import com.sun.jsp.model.User;
 import com.sun.jsp.service.UserJPA;
+import com.sun.jsp.service.impl.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,6 +29,8 @@ public class UserController {
     @Autowired
     UserJPA userJPA;
 
+    @Autowired
+    UserService userService;
     //查询
     @RequestMapping(value = "/list",method = RequestMethod.GET)
     public List<User> list(){
@@ -81,6 +84,11 @@ public class UserController {
     }
 
 
+    @RequestMapping(value = "/sendMail",method = RequestMethod.GET)
+    public String sendMail(){
+        userService.sendMail();
+        return "发送成功";
+    }
 
 
 }
