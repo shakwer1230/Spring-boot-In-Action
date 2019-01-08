@@ -73,4 +73,16 @@ public class LoggerEntity implements Serializable {
      */
     @Column(name = "ali_return_data")
     public String returnData;
+
+    /**
+     * http 状态
+     */
+    @Column(name = "ali_http_status_code")
+    public String httpStatusCode;
+
+    /**
+     * 花费总时间
+     */
+    @Column(name = "ali_time_consuming")
+    public Integer timeConsuming;
 }

@@ -1,8 +1,10 @@
 package com.sun.jsp.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.sun.jsp.model.User;
 import com.sun.jsp.service.UserJPA;
 import com.sun.jsp.service.impl.UserService;
+import com.sun.jsp.utils.HttpUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -76,6 +78,10 @@ public class UserController {
             if(flag!=false){
                 request.getSession().setAttribute("_session_user",validUser);
             }
+
+            JSONObject object=new JSONObject();
+            object.put("msg","用户："+validUser.getUserName()+","+result);
+            request.setAttribute(HttpUtils.LOGGER_RETURN,object);
         }catch (Exception e){
             result="登陆异常："+e.getMessage();
         }
