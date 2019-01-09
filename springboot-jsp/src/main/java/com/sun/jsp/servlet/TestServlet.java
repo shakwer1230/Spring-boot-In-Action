@@ -1,4 +1,4 @@
-package com.sun.servlet;
+package com.sun.jsp.servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
