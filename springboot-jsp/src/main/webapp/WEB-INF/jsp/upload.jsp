@@ -16,5 +16,15 @@
 <input type="file" name="file" />
     <input type="submit" value="文件上传"/>
 </form>
+
+
+多个文件上传<br>
+<form action="/upload/multiUp" method="post"  enctype="multipart/form-data">
+    <input type="file" name="file" /><br>
+    <input type="file" name="file" /><br>
+    <input type="file" name="file" /><br>
+
+    <input type="submit" value="文件上传"/>
+</form>
 </body>
 </html>
