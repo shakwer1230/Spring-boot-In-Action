@@ -1,6 +1,7 @@
 package com.sun.jsp.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.sun.jsp.model.Organ;
 import com.sun.jsp.model.User;
 import com.sun.jsp.service.UserJPA;
 import com.sun.jsp.service.impl.UserService;
@@ -124,4 +125,5 @@ public class UserController {
         PageRequest pageRequest=new PageRequest(user.getPage()-1,user.getSize(),sor);
         return userJPA.findAll(pageRequest).getContent();
     }
+
 }
