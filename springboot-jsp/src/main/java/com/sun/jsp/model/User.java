@@ -2,6 +2,7 @@ package com.sun.jsp.model;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sun.jsp.base.BaseEntity;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -16,7 +17,7 @@ import java.util.Date;
 @Entity
 @Table(name = "user")
 @Data
-public class User {
+public class User extends BaseEntity {
     @Id
     @GeneratedValue
     @Column(name = "id")

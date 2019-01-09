@@ -29,11 +29,13 @@ public class JSPApplication  extends SpringBootServletInitializer {
 
 
     //設置上傳文件大小
-    @Bean
-    public MultipartConfigElement multipartConfigElement()
-    { MultipartConfigFactory factory = new MultipartConfigFactory();
-    //单个文件最大 factory.setMaxFileSize("10MB"); //KB,MB /// 设置总上传数据总大小
-        factory.setMaxRequestSize("10MB");
-        return factory.createMultipartConfig();
-    }
+    // 1、可以再配置文件中設置
+    // 2、也可以java後台配置
+//    @Bean
+//    public MultipartConfigElement multipartConfigElement()
+//    { MultipartConfigFactory factory = new MultipartConfigFactory();
+//    //单个文件最大 factory.setMaxFileSize("10MB"); //KB,MB /// 设置总上传数据总大小
+//        factory.setMaxRequestSize("10MB");
+//        return factory.createMultipartConfig();
+//    }
 }

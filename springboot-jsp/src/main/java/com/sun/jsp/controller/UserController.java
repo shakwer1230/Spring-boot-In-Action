@@ -6,8 +6,9 @@ import com.sun.jsp.service.UserJPA;
 import com.sun.jsp.service.impl.UserService;
 import com.sun.jsp.utils.HttpUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -95,6 +96,32 @@ public class UserController {
         userService.sendMail();
         return "发送成功";
     }
+    @RequestMapping(value = "/organ",method = RequestMethod.GET)
+    public List<User> findUserByOrganLevel(){
+        return userJPA.findUserByOrOrganLevel(1);
+    }
+
+    @RequestMapping(value = "/delUser",method = RequestMethod.GET)
+    public String deleteUser(){
+        userJPA.deleteQuery("测试用户1","ceshiyonghu1");
+        return "刪除成功";
+    }
 
 
+    @RequestMapping(value = "/cutPage")
+    public List<User>cutPage(int page){
+        User user=new User();
+        user.setPage(page);
+        user.setSize(2);
+
+        // 數據排序
+
+        //1、獲取排序對象
+        Sort.Direction sort_direction=Sort.Direction.ASC.toString().equalsIgnoreCase(user.getSIdx())?Sort.Direction.ASC:Sort.Direction.DESC;
+        //2.設置排序對象參數
+        Sort sor=new Sort(sort_direction,user.getSIdx());
+        // 創建分頁對象
+        PageRequest pageRequest=new PageRequest(user.getPage()-1,user.getSize(),sor);
+        return userJPA.findAll(pageRequest).getContent();
+    }
 }
