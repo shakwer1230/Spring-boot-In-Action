@@ -1,5 +1,6 @@
 package com.sun.jsp.model;
 
+import com.sun.jsp.utils.validator.FlagValidator;
 import lombok.Data;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
@@ -30,4 +31,7 @@ public class ValidateEntity implements Serializable {
     @Email
     @NotBlank
     public String mail;
+
+    @FlagValidator(values = "1,2,3")
+    public String flag;
 }
