@@ -54,4 +54,5 @@ public class User extends BaseEntity {
 
     @Column(name = "logname")
     public String logName;
+
 }

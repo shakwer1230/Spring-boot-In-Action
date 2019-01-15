@@ -5,6 +5,7 @@ import com.sun.jsp.model.Organ;
 import com.sun.jsp.model.User;
 import com.sun.jsp.service.UserJPA;
 import com.sun.jsp.service.impl.UserService;
+import com.sun.jsp.service.impl.UserServiceCache;
 import com.sun.jsp.utils.HttpUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -35,6 +36,9 @@ public class UserController {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    UserServiceCache userServiceCache;
     //查询
     @RequestMapping(value = "/list",method = RequestMethod.GET)
     public List<User> list(){
@@ -124,6 +128,12 @@ public class UserController {
         // 創建分頁對象
         PageRequest pageRequest=new PageRequest(user.getPage()-1,user.getSize(),sor);
         return userJPA.findAll(pageRequest).getContent();
+    }
+
+
+    @RequestMapping(value = "/getall")
+    public List<User>getAll(){
+        return userServiceCache.list();
     }
 
 }
